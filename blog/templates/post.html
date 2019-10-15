@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="post">
+    <h1>{{ post.title }}</h1>
+    <h2>{{ post.author }}</h2>
+    <h3>{{ post.pub_date }}</h3>
+
+    <p>{{ post.body }}
+</div>
+
+<br />
+
+<p>Leave a comment to let me know what you think!</p>
+
+<div class="comment-box">
+    {% if error_message %}
+    <b>{{ error_message }}</b>
+    {% endif %}
+
+    <form action="{% url 'comment' post.id %}" method="post">
+    {% csrf_token %}
+        <div>
+            <label for="author">Name:</label>
+            <input type="text" id="author" name="author"> 
+        </div>
+        <div>
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment"></textarea>
+        </div>
+        <input type="submit" value="Comment">
+    </form>
+</div>
+
+<br />
+
+<div class="comments">
+{% if comments %}
+    <ul>
+    {% for comment in comments %}
+        <li>
+            <p><span class="author">{{ comment.author }}</span> - {{ comment.created_at }}</p>
+            <p>{{ comment.body }}</p>
+        </li>
+        <br />
+    {% endfor %}
+    </ul>
+{% endif %}
+</div>
+
+{% endblock %}
