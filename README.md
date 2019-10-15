@@ -9,20 +9,6 @@
 
 This simple gaming review blog is written in Python with the Django Web Framework. The project uses `make` with `docker` to create and run the images required for running the application and its tests.
 
-Most (but not all) of the dev work can be found under the `blog/` subfolder in the following files:
-
-```
-project root
--- ...
--- blog
----- ...
----- admin.py
----- models.py
----- tests.py
----- urls.py
----- views.py
-```
-
 #### Running
 
 ```
